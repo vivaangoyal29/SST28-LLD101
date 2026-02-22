@@ -2,8 +2,14 @@ import java.util.*;
 
 public class OnboardingService {
     private final Database db;
+    private final Parse parser;
+    private final Validation validator;
 
-    public OnboardingService(Database db, Parse parser, Validation validator) { this.db = db; }
+    public OnboardingService(Database db, Parse parser, Validation validator) {
+        this.db = db;
+        this.parser=parser;
+        this.validator=validator;
+    }
 
     // Intentionally violates SRP: parses + validates + creates ID + saves + prints.
     public void registerFromRawInput(String raw) {
